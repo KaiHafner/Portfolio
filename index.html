@@ -2,6 +2,11 @@
 <head>
     <base href="./">
     <style>
+
+        html {
+            scroll-behavior: smooth; /* Enabling smooth scrolling */
+        }
+
         :root {
             --blue: #0066cc;
             --dark-gray: #1a1a1a;
@@ -40,15 +45,28 @@
             gap: 2rem;
         }
 
-            .nav-links a {
-                color: white;
-                text-decoration: none;
-                transition: color 0.3s ease;
-            }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
 
-                .nav-links a:hover {
-                    color: var(--light-blue);
-                }
+        .nav-links a:hover {
+            color: var(--light-blue);
+        }
+
+        .nav-logo {
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem; /* Adds space between the two images */
+            background: transparent; /* Ensures there's no purple background */
+        }
+
+        .nav-logo img {
+            height: 40px; /* Set image size */
+            background: transparent; /* Ensure no background color on the images themselves */
+            border: none; /* Optional: removes any border around images */
+        }
 
         .hero {
             min-height: 100vh;
@@ -308,9 +326,19 @@
     <nav class="nav">
         <div class="nav-links">
             <a href="#home">Home</a>
-            <a href="#work">Work</a>
+            <a href="#work">Projects</a>
             <a href="#skills">Skills</a>
             <!--<a href="#contact">Contact</a>-->
+        </div>
+
+        <div class="nav-logo">
+            <!-- Image link -->
+            <a href="https://www.linkedin.com/in/kai-hafner-55a72a202/" target="_blank">
+                <img src="images/linkedin.png" alt="Your Logo" style="height: 40px;">
+            </a>
+            <a href="https://github.com/KaiHafner" target="_blank">
+                <img src="images/github.png" alt="Your Logo" style="height: 40px;">
+            </a>
         </div>
     </nav>
 
@@ -325,7 +353,7 @@
         <div class="hero-content">
             <h1 class="floating">Kai Hafner</h1>
             <p>Bog Standard Random Text For Placeholder</p>
-            <a href="#work" class="cta-button">View My Work</a>
+            <a href="#work" class="cta-button" id="viewWorkButton">View My Work</a>
         </div>
     </section>
 
@@ -353,8 +381,8 @@
                     </svg>
                 </div>
                 <div class="work-content">
-                    <h3>Physics Simulation</h3>
-                    <p>Custom physics engine implementation showcasing complex particle systems and rigid body dynamics.</p>
+                    <h3>Game Project 2</h3>
+                    <p>A sophisticated 3D game developed using Unreal Engine with advanced graphics and AI systems.</p>
                 </div>
             </div>
             <div class="work-card">
@@ -364,8 +392,8 @@
                     </svg>
                 </div>
                 <div class="work-content">
-                    <h3>Graphics Demo</h3>
-                    <p>Real-time rendering showcase using DirectX and OpenGL with advanced shading techniques.</p>
+                    <h3>Game Project 3</h3>
+                    <p>A sophisticated 3D game developed using Unreal Engine with advanced graphics and AI systems.</p>
                 </div>
             </div>
         </div>
@@ -425,18 +453,38 @@
             animatedBg.appendChild(span);
         }
 
-        //Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href').substring(1);
-                const targetElement = document.getElementById(targetId);
-                if (targetElement) {
-                    targetElement.scrollIntoView({
-                        behavior: 'smooth'
-                    });
+        //Smooth Scrolling
+        function smoothScroll(target, duration) {
+            const targetPosition = target.offsetTop;
+            const startPosition = window.pageYOffset;
+            const distance = targetPosition - startPosition;
+            let startTime = null;
+
+            // The easing function to create a smooth scroll effect
+            function ease(t, b, c, d) {
+                let ts = (t /= d) * t;
+                let tc = ts * t;
+                return b + c * (tc + (-3 * ts + 4) * t);
+            }
+
+            function scroll(timestamp) {
+                if (!startTime) startTime = timestamp;
+                const timeElapsed = timestamp - startTime;
+                const run = ease(timeElapsed, startPosition, distance, duration);
+                window.scrollTo(0, run);
+                if (timeElapsed < duration) {
+                    requestAnimationFrame(scroll);
                 }
-            });
+            }
+
+            // Start the animation
+            requestAnimationFrame(scroll);
+        }
+
+        document.getElementById('viewWorkButton').addEventListener('click', function (e) {
+            e.preventDefault(); // Prevent default anchor behavior
+            const targetElement = document.getElementById('work');
+            smoothScroll(targetElement, 1000); // Duration set to 1000ms (1 second)
         });
     </script>
 
