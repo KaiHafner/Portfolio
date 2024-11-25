@@ -91,15 +91,15 @@
             z-index: 1;
         }
 
-            .animated-bg span {
-                position: absolute;
-                display: block;
-                width: 20px;
-                height: 20px;
-                background: rgba(255, 255, 255, 0.1);
-                animation: move 25s linear infinite;
-                border-radius: 50%;
-            }
+        .animated-bg span {
+            position: absolute;
+            display: block;
+            width: 20px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            animation: move 25s linear infinite;
+            border-radius: 50%;
+        }
 
         .hero-content {
             position: relative;
@@ -429,6 +429,7 @@
     </section>-->
 
     <script>
+
         function handleSubmit(event) {
             event.preventDefault();
 
@@ -443,15 +444,16 @@
             event.target.reset();
         }
 
-        // Create animated background elements dynamically
         const animatedBg = document.querySelector('.animated-bg');
+        // Spawn new background elements
         for (let i = 0; i < 15; i++) {
             const span = document.createElement('span');
             span.style.left = Math.random() * 100 + '%';
             span.style.top = Math.random() * 100 + '%';
-            span.style.animationDelay = Math.random() * 5 + 's';
+            span.style.animationDelay = Math.random() * 0 + 's';
             animatedBg.appendChild(span);
         }
+
 
         //Smooth Scrolling
         function smoothScroll(target, duration) {
