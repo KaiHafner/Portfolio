@@ -444,15 +444,23 @@
             event.target.reset();
         }
 
-        const animatedBg = document.querySelector('.animated-bg');
-        // Spawn new background elements
-        for (let i = 0; i < 15; i++) {
-            const span = document.createElement('span');
-            span.style.left = Math.random() * 100 + '%';
-            span.style.top = Math.random() * 100 + '%';
-            span.style.animationDelay = Math.random() * 0 + 's';
-            animatedBg.appendChild(span);
+        function spawnAnimatedBg() {
+            const animatedBg = document.querySelector('.animated-bg');
+
+            // Spawn new background elements every 500ms
+            setInterval(() => {
+                const span = document.createElement('span');
+                span.style.left = Math.random() * 100 + '%'; // Random horizontal position
+                span.style.top = Math.random() * 100 + '%'; // Random vertical position
+                span.style.animationDelay = Math.random() * 0 + 's'; // Randomize animation delay
+
+                // Append the new element to the background container
+                animatedBg.appendChild(span);
+            }, 500); // New ball every 500ms (0.5 seconds)
         }
+
+        // Call spawn function to generate the balls initially
+        spawnAnimatedBg();
 
 
         //Smooth Scrolling
