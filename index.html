@@ -274,9 +274,18 @@
             transition: transform 0.3s ease;
         }
 
-            .work-card:hover {
-                transform: translateY(-10px);
-            }
+        .work-card a {
+            text-decoration: none; /* Removes the underline */
+            color: inherit; /* Ensures the link inherits the text color (in this case, white) */
+        }
+
+        .work-card a:hover {
+            color: inherit; /* Ensure the text color remains the same on hover */
+        }
+
+        .work-card:hover {
+            transform: translateY(-10px);
+        }
 
         .work-image {
             width: 100%;
@@ -378,39 +387,46 @@
         <h2>Noteworthy Projects</h2>
         <div class="work-grid">
             <div class="work-card">
-                <div class="work-image">
-                    <img src="images/ReptileWipeout.png" alt="Reptile Wipeout">
-                </div>
-                <div class="work-content">
-                    <h3>Reptile Wipeout</h3>
-                    <p>Reptile Wipeout race against yourself in a climatic struggle of skill and technique to reach the finish by avoiding deadly traps and falls that plague the treacherous path. </p>
-                </div>
+                <a href="projects.html#ReptileWipeout">
+                    <div class="work-image">
+                        <img src="images/ReptileWipeout.png" alt="Reptile Wipeout">
+                    </div>
+                    <div class="work-content">
+                        <h3>Reptile Wipeout</h3>
+                        <p>Reptile Wipeout race against yourself in a climatic struggle of skill and technique to reach the finish by avoiding deadly traps and falls that plague the treacherous path. </p>
+                    </div>
+                </a>
             </div>
             <div class="work-card">
-                <div class="work-image">
-                    <img src="images/PirateSurvivor.png" alt="Pirate Survivors">
-                </div>
-                <div class="work-content">
-                    <h3>Pirate Survivors</h3>
-                    <p>Prepare to embark on a dangerous journey through treacherous seas. Step into the boots of a pirate captain navigating the unforgiven waters of the Caribbean in search of Davy Joness loot and fortune but dont forget your ultimate prize, to stay alive.</p>
-                </div>
+                <a href="projects.html#PirateSurvivors">
+                    <div class="work-image">
+                        <img src="images/PirateSurvivor.png" alt="Pirate Survivors">
+                    </div>
+                    <div class="work-content">
+                        <h3>Pirate Survivors</h3>
+                        <p>Prepare to embark on a dangerous journey through treacherous seas. Step into the boots of a pirate captain navigating the unforgiven waters of the Caribbean in search of Davy Joness loot and fortune but dont forget your ultimate prize, to stay alive.</p>
+                    </div>
+                </a>
             </div>
             <div class="work-card">
-                <div class="work-image">
-                    <img src="images/greg.png" alt="Greg On The Beach">
-                </div>
-                <div class="work-content">
-                    <h3>Greg On The Beach</h3>
-                    <p>Greg is on the beach, he has his pizza but wants to eat it at home to avoid those pesky seagulls. <br> <br>This game was made over the course of a week for the GGJ (Global Game Jam 2024)</p>
-                </div>
+                <a href="projects.html#GregOnTheBeach">
+                    <div class="work-image">
+                        <img src="images/greg.png" alt="Greg On The Beach">
+                    </div>
+                    <div class="work-content">
+                        <h3>Greg On The Beach</h3>
+                        <p>Greg is on the beach, he has his pizza but wants to eat it at home to avoid those pesky seagulls. <br> <br>This game was made over the course of a week for the GGJ (Global Game Jam 2024)</p>
+                    </div>
+                </a>
             </div>
         </div>
 
-            <!--button-->
-            <div class="cta-container">
-                <a href="projects.html" class="cta-button-projects" id="AllProjects">More Projects</a>
-            </div>
+        <!--button-->
+        <div class="cta-container">
+            <a href="projects.html" class="cta-button-projects" id="AllProjects">More Projects</a>
+        </div>
     </section>
+
 
     <section id="skills" class="section">
         <h2>Technical Skills</h2>
